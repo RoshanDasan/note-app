@@ -4,6 +4,7 @@ import crypto from "crypto";
 
 export const register = async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(email);
   const isEmail = await User.findOne({ email });
   if (isEmail) return res.status(500).send("email already exist");
   const user = new User({ name, email, password });
@@ -18,6 +19,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password } = req.body;
   const isEmail = await User.findOne({ email });
+  console.log(isEmail);
   if (!isEmail) return res.status(500).send("email not found");
   if (isEmail.password !== password)
     return res.status(500).send("password incorrect");
