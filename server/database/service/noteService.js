@@ -1,7 +1,8 @@
 import Note from "../modal/noteSchema.js";
 
 export const setNote = async (req, res) => {
-  const { userId, header, note } = req.body;
+  const { header, note } = req.body;
+  const { userId } = req.params;
   try {
     const noteData = new Note({ userId, header, note });
     Note.create(noteData);
@@ -22,5 +23,31 @@ export const removeNote = async (req, res) => {
     });
   } catch (error) {
     throw new Error("error: ", error);
+  }
+};
+
+export const getNotes = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const data = await Note.find({ userId });
+    res.json({
+      status: "success",
+      data,
+    });
+  } catch (error) {
+    throw new Error("failed to fetch data");
+  }
+};
+
+export const getNote = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = await Note.findOne({ _id: id });
+    res.json({
+      status: "success",
+      data,
+    });
+  } catch (error) {
+    throw new Error("failed to fetch data");
   }
 };

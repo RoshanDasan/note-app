@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setToken, setUser } from "../state/Slice";
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -50,7 +50,7 @@ export default function Login() {
       const { data, token } = await response.json();
       console.log("Login successful!");
       localStorage.setItem("token", token);
-      localStorage.setItem("user", data);
+      localStorage.setItem("user", JSON.stringify(data));
       dispatch(setUser({ user: data }));
       dispatch(setToken({ token }));
       navigate("/");

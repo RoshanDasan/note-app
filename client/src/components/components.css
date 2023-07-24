@@ -1,0 +1,44 @@
+.main {
+  display: flex;
+  height: 40rem;
+  padding: 20px;
+}
+.left {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+h3{
+    text-align: center;
+}
+.right {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  
+  justify-content: space-evenly;
+}
+.box-list {
+  border: 0.5px solid black;
+  border-radius: 10px;
+  padding: 10px;
+
+  width: fit-content;
+}
+.show-note {
+    border: 0.5px solid black;
+    border-radius: 10px;
+    height: 150px;
+}
+.add-note-main{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.input-field{
+    margin: 30px;
+    
+}

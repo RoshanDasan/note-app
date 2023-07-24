@@ -10,6 +10,10 @@ const noteSchema = new Schema({
   note: {
     type: String,
   },
+  createdAt: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
 const Note = model("Note", noteSchema);

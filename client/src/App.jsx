@@ -5,20 +5,19 @@ import Login from "./pages/Login";
 import "./App.css";
 import Home from "./pages/Home";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser,setToken } from "./state/Slice";
+import { setUser, setToken } from "./state/Slice";
 
 function App() {
   const stateToken = useSelector((state) => state.user.token);
   const [token, settoken] = useState(stateToken);
   const dispatch = useDispatch();
 
-  console.log(token);
   useEffect(() => {
     settoken(stateToken);
   }, [stateToken]);
 
   useEffect(() => {
-    dispatch(setUser({ user: localStorage.getItem("user") }));
+    dispatch(setUser({ user: JSON.parse(localStorage.getItem("user")) }));
     dispatch(setToken({ token: localStorage.getItem("token") }));
   }, [stateToken]);
   return (
